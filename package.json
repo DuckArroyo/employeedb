@@ -1,0 +1,30 @@
+{
+  "name": "u-develop-it",
+  "version": "1.0.0",
+  "description": "Coding bootcamp week 12/24. Voting app",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DuckArroyo/u-develop-it.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DuckArroyo/u-develop-it/issues"
+  },
+  "homepage": "https://github.com/DuckArroyo/u-develop-it#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "express": "^4.17.1",
+    "inquirer": "^8.2.0",
+    "mysql2": "^2.3.2"
+  },
+  "devDependencies": {
+    "jest": "^27.3.0"
+  }
+}
