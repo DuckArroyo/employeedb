@@ -6,7 +6,8 @@ You’ll need to use the MySQL2 package (Links to an external site.) to connect 
 
 - WORKING NOTES
   bower install console.table --save
-  DID NOT INSTALL - COMMAND NOT FOUND
+  DID NOT INSTALL - COMMAND NOT FOUND - Installed bower and even then it did not install console.table.
+  Was able to install the npm console table.
 
 # Acceptance Criteria
 
