@@ -1,6 +1,8 @@
-const express = require("express");
+//!From tutor we can delete this file
+
+// const express = require("express"); //!Dont need express or routes.
 const db = require("./db/connection");
-const apiRoutes = require("./routes");
+// const apiRoutes = require("./routes");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
