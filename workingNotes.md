@@ -1,7 +1,16 @@
 Questions
 Could a JS file be created to execute CLI commands.
 
+Installations
+express -
+Sequelize - installed
+
 Stop points
+
+## Save
+
+Heroku app instructions
+https://dashboard.heroku.com/apps/challenge13bootcamp/deploy/heroku-git
 
 ## Bonus
 
