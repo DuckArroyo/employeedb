@@ -1,9 +1,24 @@
-Questions
+# Questions
+
 Could a JS file be created to execute CLI commands.
 
-Installations
-express -
-Sequelize - installed
+# Completed Installations
+
+mySql2 - DONE
+npm install --save mysql2
+https://www.npmjs.com/package/mysql2
+
+inquirer - DONE
+npm install inquirer
+https://www.npmjs.com/package/inquirer
+
+console.table - DONE
+npm install console.table --save
+https://www.npmjs.com/package/console.table
+
+express - DONE not needed
+
+Sequelize - DONE not needed
 
 Stop points
 
