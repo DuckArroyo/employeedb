@@ -1,17 +1,15 @@
-//!From tutor we can delete this file
-
-//Restarted from tutor's advice
-
 //sql
 const mysql = require("mysql2");
 
 //inquirer
 const inquirer = require("inquirer");
 
+//consoleTable
 const consoleTable = require("console.table");
 
 require(".env").config();
 
+//server setup
 const connect = mysql.createConnection({
   database: "DB_NAME",
   host: "DB_HOST",
@@ -19,12 +17,19 @@ const connect = mysql.createConnection({
   password: "DB_PW",
 });
 
+//error catcher and confirmation of connection
 connect.connect((err) => {
   if (err) throw err;
   console.log("Connection stablished");
 });
 
 const prompt = () => {
+  console.log("+===============+");
+  console.log("|   Company X   |");
+  console.log("+ = Text Art =  +");
+  console.log("|  Employee db  |");
+  console.log("+===============+");
+
   inquirer
     .prompt([
       {
@@ -42,12 +47,58 @@ const prompt = () => {
         ],
       },
     ])
-    .then((answers) => {
-      //Switches code
-    });
+    .then(res => {
+    let choice = res.choice;
+    // Call the appropriate function depending on what the user chose
+    switch (choice) {
+      case "VIEW_EMPLOYEES":
+        viewEmployees();
+        break;
+        
 };
+
+prompt();
 
 viewDepartments = () => {
   console.log("Viewing departments");
-  const sql = `SELECT department.id AS id, department.name AS department FROM department`;
+  const sqlCall = `SELECT department.id AS id, department.name AS department FROM department`;
 };
+
+// View all employees
+function viewEmployees() {
+  db.findAllEmployees()
+    .then(([rows]) => {
+      let employees = rows;
+      console.log("\n");
+      console.table(employees);
+    })
+    .then(() => loadMainPrompts());
+}
+
+// View all roles
+function viewRoles() {
+  db.findAllRoles()
+    .then(([rows]) => {
+      let roles = rows;
+      console.log("\n");
+      console.table(roles);
+    })
+    .then(() => loadMainPrompts());
+}
+
+// View all deparments
+function viewDepartments() {
+  db.findAllDepartments()
+    .then(([rows]) => {
+      let departments = rows;
+      console.log("\n");
+      console.table(departments);
+    })
+    .then(() => loadMainPrompts());
+}
+
+// Exit the application
+function quit() {
+  console.log("Goodbye!");
+  process.exit();
+}
