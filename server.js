@@ -89,30 +89,30 @@ const prompt = () => {
             quit();
       }
     }
+  }
+  // viewDepartments = () => {
+  //   console.log("Viewing departments");
+  //   const sqlCall = `SELECT department.id AS id, department.name AS department FROM department`;
+  //   db.findAllDepartments()
+  //     .then(([rows]) => {
+  //       let departments = rows;
+  //       console.log("\n");
+  //       console.table(departments);
+  //     })
+  //     .then(() => loadMainPrompts());
+  // };
 
-  viewDepartments = () => {
-    console.log("Viewing departments");
-    const sqlCall = `SELECT department.id AS id, department.name AS department FROM department`;
-    db.findAllDepartments()
-      .then(([rows]) => {
-        let departments = rows;
-        console.log("\n");
-        console.table(departments);
-      })
-      .then(() => loadMainPrompts());
-  };
-
-  function viewDepartments() {
-    console.log("Viewing departments");
-    const sqlCall = `SELECT department.id AS id, department.name AS department FROM department`;
-    db.findAllDepartments()
-      .then(([rows]) => {
-        let departments = rows;
-        console.log("\n");
-        console.table(departments);
-      })
-      .then(() => loadMainPrompts());
-  };
+  // function viewDepartments() {
+  //   console.log("Viewing departments");
+  //   const sqlCall = `SELECT department.id AS id, department.name AS department FROM department`;
+  //   db.findAllDepartments()
+  //     .then(([rows]) => {
+  //       let departments = rows;
+  //       console.log("\n");
+  //       console.table(departments);
+  //     })
+  //     .then(() => loadMainPrompts());
+  // };
 
   function viewRoles() {
     db.findAllRoles()
@@ -122,7 +122,7 @@ const prompt = () => {
         console.table(roles);
       })
       .then(() => loadMainPrompts());
-  };
+  }
 
   function viewEmployees() {
     db.findAllEmployees()
@@ -132,21 +132,21 @@ const prompt = () => {
         console.table(employees);
       })
       .then(() => loadMainPrompts());
-  };
+  }
 
-  function addDepartment() {};
+  function addDepartment() {}
         
-  function addRole();
+  function addRole() {}
 
-  function addEmployee();
+  function addEmployee() {}
 
-  function updateRole();
+  function updateRole() {}
 
   function quit() {
     console.log("Goodbye!");
     process.exit();
-  };
-}
+  }
+};
 
 prompt();
 
