@@ -18,7 +18,10 @@ https://www.npmjs.com/package/console.table
 
 express - DONE not needed
 
-Sequelize - DONE not needed
+Sequelize - Will use sequelize to run seed file
+npm i sequelize
+https://www.npmjs.com/package/sequelize
+
 
 Stop points
 
