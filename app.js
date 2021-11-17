@@ -11,10 +11,10 @@ require(".env").config();
 
 //server setup
 const connect = mysql.createConnection({
-  database: "DB_NAME",
-  host: "DB_HOST",
-  user: "DB_USER",
-  password: "DB_PW",
+  database: process.env.DB_NAME,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PW,
 });
 
 //error catcher and confirmation of connection
@@ -49,70 +49,70 @@ const prompt = () => {
         ],
       },
     ])
-    .then(res => {
+    .then((res) => {
       let choice = res.choice;
       // Call the appropriate function depending on what the user chose
       switch (choice) {
         case "view all departments":
           viewDepartments();
-            break;
+          break;
 
         case "view all roles":
-          viewRoles()
-            break;
+          viewRoles();
+          break;
 
         case "view all employees":
-          viewEmployees()
-            break;
+          viewEmployees();
+          break;
 
         case "add a department":
-          addDepartment()
-            break;
+          addDepartment();
+          break;
 
         case "add a role":
           addRole();
-            break;
-            
+          break;
+
         case "add an employee":
           addEmployee();
-            break;
-            
+          break;
+
         case "update an employee role":
           updateRole();
-            break;
-        
-        case "exit":
-            quit();
-            break;
-            
-          default:
-            quit();
-      }
-    }
-  }
-  // viewDepartments = () => {
-  //   console.log("Viewing departments");
-  //   const sqlCall = `SELECT department.id AS id, department.name AS department FROM department`;
-  //   db.findAllDepartments()
-  //     .then(([rows]) => {
-  //       let departments = rows;
-  //       console.log("\n");
-  //       console.table(departments);
-  //     })
-  //     .then(() => loadMainPrompts());
-  // };
+          break;
 
-  // function viewDepartments() {
-  //   console.log("Viewing departments");
-  //   const sqlCall = `SELECT department.id AS id, department.name AS department FROM department`;
-  //   db.findAllDepartments()
-  //     .then(([rows]) => {
-  //       let departments = rows;
-  //       console.log("\n");
-  //       console.table(departments);
-  //     })
-  //     .then(() => loadMainPrompts());
-  // };
+        case "exit":
+          quit();
+          break;
+
+        default:
+          quit();
+      }
+    });
+
+  viewDepartments = () => {
+    console.log("Viewing departments");
+    const sqlCall = `SELECT department.id AS id, department.name AS department FROM department`;
+    db.findAllDepartments()
+      .then(([rows]) => {
+        let departments = rows;
+        console.log("\n");
+        console.table(departments);
+      })
+      .then(() => loadMainPrompts());
+  };
+
+  function viewDepartments() {
+    console.log("Viewing departments");
+    const sqlCall = `SELECT department.id AS id, department.name AS department FROM department`;
+    db.findAllDepartments()
+      .then(([rows]) => {
+        let departments = rows;
+        console.log("\n");
+        console.table(departments);
+      })
+      .then(() => loadMainPrompts());
+  }
 
   function viewRoles() {
     db.findAllRoles()
@@ -135,7 +135,7 @@ const prompt = () => {
   }
 
   function addDepartment() {}
-        
+
   function addRole() {}
 
   function addEmployee() {}
@@ -149,5 +149,3 @@ const prompt = () => {
 };
 
 prompt();
-
-
