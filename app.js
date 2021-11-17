@@ -114,7 +114,21 @@ const prompt = () => {
       .then(() => loadMainPrompts());
   }
 
+  function viewDepartments() {
+    console.log("view all departments");
+    const sqlCall = `SELECT department.id AS id, department.name AS department FROM department`;
+    db.findAllDepartments()
+      .then(([rows]) => {
+        let departments = rows;
+        console.log("\n");
+        console.table(departments);
+      })
+      .then(() => loadMainPrompts());
+  };
+
   function viewRoles() {
+    console.log("view all roles");
+    const sqlCall = `SELECT department.id AS id, department.name AS department FROM department`;
     db.findAllRoles()
       .then(([rows]) => {
         let roles = rows;
