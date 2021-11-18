@@ -60,7 +60,8 @@ const mainPrompt = () => {
       },
     ])
     .then((res) => {
-      let choice = res.choice;
+      let choice = res.choices;
+      console.log(choice);
       // Call the appropriate function depending on what the user chose
       switch (choice) {
         case "create the database":
@@ -105,38 +106,52 @@ const mainPrompt = () => {
   function viewDepartments() {
     console.log("Viewing all departments");
     const question = `SELECT * FROM department`;
-   
-  connect.promise().query(question, (error, rows) => {
-    if(error) throw error;
-    console.table(rows);
-    mainPrompt();
-  })
-};
-    
-  
+
+    connect
+      .promise()
+      .query(question)
+      //destructuing shows the row without having to invoke [0]
+      .then(([rows]) => {
+        // if (error) throw error;
+        console.table(rows);
+        mainPrompt();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   function viewRoles() {
-    console.log("view all roles");
-    const question = `SELECT role.id, role.title, department.name AS department
-                      FROM role
-                      INNER JOIN department ON role.department_id = department.id`;
+    console.log("Viewing all roles");
+    const question = `SELECT * FROM role`;
 
-    connect.promise().query(question, (error, rows) => {
-      if(error) throw error;
-      console.table(rows);
-      mainPrompt();
-    })
-  };
+    connect
+      .promise()
+      .query(question)
+      //destructuing shows the row without having to invoke [0]
+      .then(([rows]) => {
+        // if (error) throw error;
+        console.table(rows);
+        mainPrompt();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
-  // function viewEmployees() {
-  //   db.findAllEmployees()
-  //     .then(([rows]) => {
-  //       let employees = rows;
-  //       console.log("\n");
-  //       console.table(employees);
-  //     })
-  //     .then(() => loadMainPrompts());
-  // }
+  function viewEmployees() {
+    console.log("Viewing all employees");
+    const question = `SELECT * FROM employee`;
+
+    connect
+      .promise()
+      .query(question)
+      .then(([rows]) => {
+        //if (error) throw error;
+        console.table(rows);
+        mainPrompt();
+      });
+  }
 
   // function addDepartment() {}
 
