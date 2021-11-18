@@ -7,14 +7,23 @@ const inquirer = require("inquirer");
 //consoleTable
 const consoleTable = require("console.table");
 
-require(".env").config();
+//!Commenting out becasue it is not finding the file
+//!app.js starts otherwise
 
+//require(".env").config();
 //server setup
+// const connect = mysql.createConnection({
+//   database: process.env.DB_NAME,
+//   host: process.env.DB_HOST,
+//   user: process.env.DB_USER,
+//   password: process.env.DB_PW,
+// });
+
 const connect = mysql.createConnection({
-  database: process.env.DB_NAME,
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PW,
+  database: "companyX",
+  host: "localhost",
+  user: "root",
+  password: "Omega!519",
 });
 
 //error catcher and confirmation of connection
@@ -23,7 +32,7 @@ connect.connect((err) => {
   console.log("Connection stablished");
 });
 
-const prompt = () => {
+const mainPrompt = () => {
   console.log("+===============+");
   console.log("|   Company X   |");
   console.log("+ = Text Art =  +");
@@ -38,6 +47,7 @@ const prompt = () => {
         name: "choices",
         message: "What action would you like to perform?",
         choices: [
+          "Create the database - currently not working",
           "view all departments",
           "view all roles",
           "view all employees",
@@ -53,6 +63,8 @@ const prompt = () => {
       let choice = res.choice;
       // Call the appropriate function depending on what the user chose
       switch (choice) {
+        case "create the database":
+          createDb();
         case "view all departments":
           viewDepartments();
           break;
@@ -90,71 +102,49 @@ const prompt = () => {
       }
     });
 
-  viewDepartments = () => {
-    console.log("Viewing departments");
-    const sqlCall = `SELECT department.id AS id, department.name AS department FROM department`;
-    db.findAllDepartments()
-      .then(([rows]) => {
-        let departments = rows;
-        console.log("\n");
-        console.table(departments);
-      })
-      .then(() => loadMainPrompts());
-  };
-
   function viewDepartments() {
-    console.log("Viewing departments");
-    const sqlCall = `SELECT department.id AS id, department.name AS department FROM department`;
-    db.findAllDepartments()
-      .then(([rows]) => {
-        let departments = rows;
-        console.log("\n");
-        console.table(departments);
-      })
-      .then(() => loadMainPrompts());
-  }
-
-  function viewDepartments() {
-    console.log("view all departments");
-    const sqlCall = `SELECT department.id AS id, department.name AS department FROM department`;
-    db.findAllDepartments()
-      .then(([rows]) => {
-        let departments = rows;
-        console.log("\n");
-        console.table(departments);
-      })
-      .then(() => loadMainPrompts());
-  };
+    console.log("Viewing all departments");
+    const question = `SELECT * FROM department`;
+   
+  connect.promise().query(question, (error, rows) => {
+    if(error) throw error;
+    console.table(rows);
+    mainPrompt();
+  })
+};
+    
+  
 
   function viewRoles() {
     console.log("view all roles");
-    const sqlCall = `SELECT department.id AS id, department.name AS department FROM department`;
-    db.findAllRoles()
-      .then(([rows]) => {
-        let roles = rows;
-        console.log("\n");
-        console.table(roles);
-      })
-      .then(() => loadMainPrompts());
-  }
+    const question = `SELECT role.id, role.title, department.name AS department
+                      FROM role
+                      INNER JOIN department ON role.department_id = department.id`;
 
-  function viewEmployees() {
-    db.findAllEmployees()
-      .then(([rows]) => {
-        let employees = rows;
-        console.log("\n");
-        console.table(employees);
-      })
-      .then(() => loadMainPrompts());
-  }
+    connect.promise().query(question, (error, rows) => {
+      if(error) throw error;
+      console.table(rows);
+      mainPrompt();
+    })
+  };
 
-  function addDepartment() {}
+  // function viewEmployees() {
+  //   db.findAllEmployees()
+  //     .then(([rows]) => {
+  //       let employees = rows;
+  //       console.log("\n");
+  //       console.table(employees);
+  //     })
+  //     .then(() => loadMainPrompts());
+  // }
 
-  function addRole() {}
+  // function addDepartment() {}
 
-  function addEmployee() {}
+  // function addRole() {}
 
-  function updateRole() {}
+  // function addEmployee() {}
+
+  // function updateRole() {}
 
   function quit() {
     console.log("Goodbye!");
@@ -162,4 +152,4 @@ const prompt = () => {
   }
 };
 
-prompt();
+mainPrompt();
