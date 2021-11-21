@@ -174,25 +174,54 @@ const mainPrompt = () => {
   }
 
   function addDepartment() {
-
-    // RESPONSE
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "name",
+          message: "What is the name of the deparment you would like to add?",
+        },
+      ])
+      // RESPONSE
+      .then((answer) => {
+        console.log("CL answer: ", answer);
+        let department = answer;
+        console.log("CL department: ", department);
+      });
     connect
-    .promise()
-    .query(question)
-    //destructuing shows the row without having to invoke [0]
-    .then(([rows]) => {
-      // if (error) throw error;
-      console.table(rows);
-      mainPrompt();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      .promise()
+      .query("Insert into department set ?", department)
+
+      //destructuing shows the row without having to invoke [0]
+      .then((res) => {
+        // if (error) throw error;
+        console.log("CL department: ", department);
+        console.table(res);
+        mainPrompt();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   // function addRole() {}
 
-  // function addEmployee() {}
+  // function addEmployee() {
+  //   prompt([
+  //     {
+  //       name: "first_name",
+  //       message: "What is the employee's first name?"
+  //     },
+  //     {
+  //       name: "last_name",
+  //       message: "What is the employee's last name?"
+  //     }
+  //   ])
+  //     .then(res => {
+  //       let firstName = res.first_name;
+  //       let lastName = res.last_name;
+  //     }
+  // };
 
   // function updateRole() {}
 
