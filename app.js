@@ -35,7 +35,7 @@ connect.connect((err) => {
 const mainPrompt = () => {
   console.log("+===============+");
   console.log("|   Company X   |");
-  console.log("+ = Text Art =  +");
+  console.log("+ =          =  +");
   console.log("|  Employee db  |");
   console.log("+===============+");
 
@@ -47,7 +47,7 @@ const mainPrompt = () => {
         name: "choices",
         message: "What action would you like to perform?",
         choices: [
-          "Create the database - currently not working",
+          "test",
           "view all departments",
           "view all roles",
           "view all employees",
@@ -64,8 +64,10 @@ const mainPrompt = () => {
       console.log(choice);
       // Call the appropriate function depending on what the user chose
       switch (choice) {
-        case "create the database":
-          createDb();
+        case "test":
+          test();
+          break;
+
         case "view all departments":
           viewDepartments();
           break;
@@ -102,6 +104,24 @@ const mainPrompt = () => {
           quit();
       }
     });
+
+  function test() {
+    console.log("testing queries");
+    const question = `SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary, CONCAT(manager.first_name, ' ', manager.last_name) AS manager FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department on role.department_id = department.id LEFT JOIN employee manager on manager.id = employee.manager_id;`;
+
+    connect
+      .promise()
+      .query(question)
+      //destructuing shows the row without having to invoke [0]
+      .then(([rows]) => {
+        // if (error) throw error;
+        console.table(rows);
+        mainPrompt();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   function viewDepartments() {
     console.log("Viewing all departments");
@@ -153,7 +173,22 @@ const mainPrompt = () => {
       });
   }
 
-  // function addDepartment() {}
+  function addDepartment() {
+
+    // RESPONSE
+    connect
+    .promise()
+    .query(question)
+    //destructuing shows the row without having to invoke [0]
+    .then(([rows]) => {
+      // if (error) throw error;
+      console.table(rows);
+      mainPrompt();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
 
   // function addRole() {}
 

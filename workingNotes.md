@@ -1,7 +1,5 @@
 # Questions
 
-Could a JS file be created to execute CLI commands.
-
 # Completed Installations
 
 mySql2 - DONE
@@ -21,7 +19,6 @@ express - DONE not needed
 Sequelize - Will use sequelize to run seed file
 npm i sequelize
 https://www.npmjs.com/package/sequelize
-
 
 Stop points
 
@@ -43,6 +40,5 @@ View employees by department.
 Delete departments, roles, and employees.
 
 View the total utilized budget of a department—in other words, the combined salaries of all employees in that department.
-
 
 ## next steps
