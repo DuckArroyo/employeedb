@@ -1,5 +1,3 @@
-USE companyX;
-
 INSERT INTO department
     (name)
 VALUES

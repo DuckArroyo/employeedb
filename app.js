@@ -7,18 +7,6 @@ const inquirer = require("inquirer");
 //consoleTable
 const consoleTable = require("console.table");
 
-//!Commenting out becasue it is not finding the file
-//!app.js starts otherwise
-
-//require(".env").config();
-//server setup
-// const connect = mysql.createConnection({
-//   database: process.env.DB_NAME,
-//   host: process.env.DB_HOST,
-//   user: process.env.DB_USER,
-//   password: process.env.DB_PW,
-// });
-
 const connect = mysql.createConnection({
   database: "companyX",
   host: "localhost",

@@ -6,27 +6,13 @@
 
 # Links
 
-Watlkthrough Video [Link]()
+Watlkthrough Video [Link](https://watch.screencastify.com/v/4Vkl5OBpfzXkco7qfKSk)
 
 Github Repository [Link](https://github.com/DuckArroyo/challenge12)
 
 # Description
 
-# Project Guidelines/Requirements
-
-## Bonus
-
-See if you can add some additional functionality to your application, such as the ability to:
-
-- Update employee managers
-
-- View employees by manager
-
-- View employees by department
-
-- Delete departments, roles, and employees
-
-- View the total utilized budget of a department -- ie the combined salaries of all employees in that department
+This is a sql project to manage an employee database.
 
 ## Required installations for code duplication
 
@@ -70,4 +56,6 @@ DeveloperDuckArroyo
 
 # Screnshots
 
-<img src="./.png" style="width: 400px">
+<img src="./assets/sql1.png" style="width: 400px">
+
+<img src="./assets/sql2.png" style="width: 400px">
