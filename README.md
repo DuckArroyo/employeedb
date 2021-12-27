@@ -6,9 +6,9 @@
 
 # Links
 
-Walkthrough Video [Link](https://watch.screencastify.com/v/4Vkl5OBpfzXkco7qfKSk)
+[Walkthrough Video](https://watch.screencastify.com/v/4Vkl5OBpfzXkco7qfKSk)
 
-Github Repository [Link](https://github.com/DuckArroyo/challenge12)
+[Github Repository](https://github.com/DuckArroyo/employeedb)
 
 # Description
 
