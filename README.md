@@ -1,8 +1,10 @@
-# challenge12
-
 # UO Coding bootcamp Employee Tracker
 
 ![GitHublicense](https://img.shields.io/npm/l/express?style=for-the-badge)
+
+## UO Coding bootcamp Challenge
+
+UO Coding bootcamp Challenge 12
 
 # Links
 
